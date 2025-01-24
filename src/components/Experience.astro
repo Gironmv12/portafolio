@@ -1,0 +1,57 @@
+---
+import { ArrowUpRight, BadgeCheck } from "lucide-astro";
+--- 
+{/* Work Experience Section */}
+<div class="mt-10 p-4 md:p-16">
+    {/* Header */}
+    <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+      <div class="space-y-4 text-center md:text-left">
+        <span class="text-xs bg-[#131415] text-[#a7aab4] px-4 py-2 rounded-full">
+            PARADAS PROFESIONALES
+        </span>
+        <h2 class="text-2xl md:text-4xl font-semibold text-white">Experiencia Profesional</h2>
+      </div>
+      <a 
+        href="/doc/cv_Actualizado_Giron.pdf" 
+        class="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg transition-colors mt-4 md:mt-0"
+        target="_blank"
+      >
+        Ver CV
+        <ArrowUpRight className="w-4 h-4" />
+      </a>
+    </div>
+ 
+    {/* Experience List */}
+    <div class="border-t border-zinc-800">
+      <div class="py-4 md:py-8 flex flex-col md:flex-row justify-between items-start">
+        <div>
+          <h3 class="text-lg md:text-xl font-medium text-white">Secretaría de Identidad y Responsabilidad Universitaria (SIRESU)</h3>
+          <p class="text-zinc-400 mt-1">Desarrollador FullStack</p>
+        </div>
+        <span class="text-zinc-400 text-sm md:text-base">Julio 2024 - Diciembre 2024 | Tuxtla Gutiérrez, Chiapas, México</span>
+      </div>
+
+      <ul class="list-none text-zinc-400 text-sm md:text-lg space-y-2">
+          <li class="flex items-start text-sm md:text-base">
+              <BadgeCheck  class="w-5 h-5 mr-2" />
+              Desarrollo y mantenimiento de aplicaciones web responsivas utilizando PHP y Laravel.
+          </li>
+          <li class="flex items-start text-sm md:text-base">
+              <BadgeCheck class="w-5 h-5 mr-2" />
+              Implementación de APIs Restful para funcionalidades avanzadas.
+          </li>
+          <li class="flex items-start text-sm md:text-base">
+              <BadgeCheck class="w-5 h-5 mr-2" />
+              Mantenimiento y optimización de la base de datos en MySQL.
+          </li>
+          <li class="flex items-start text-sm md:text-base">
+              <BadgeCheck class="w-5 h-5 mr-2" />
+              Creación de nuevas funcionalidades para mejorar la experiencia del usuario.
+          </li>
+          <li class="flex items-start text-sm md:text-base">
+              <BadgeCheck class="w-5 h-5 mr-2" />
+              Diseño de interfaces modernas y responsivas con Tailwind CSS.
+          </li>
+      </ul>
+    </div>
+</div>
