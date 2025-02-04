@@ -1,0 +1,155 @@
+---
+import { Lightbulb, Code, Clock, Rocket } from "lucide-astro";
+const timelineData = [
+  {
+    title: 'Levatamiento de requerimientos',
+    date: 'Septiembre 2024',
+    description: 'Wireframes y planificacion del proyecto, definiendo la arquitectura base y flujos de usuario.',
+    image: '/assets/img/requerimientos.jpg',
+    icon: Lightbulb
+  },
+  {
+    title: 'Diseño UI/UX',
+    date: 'Septiembre 2024',
+    description: 'Desarrollo de la interfaz de usuario y experiencia de usuario, con énfasis en la accesibilidad.',
+    image: '/assets/img/uiux.jpg',
+    icon: Code
+  },
+  {
+    title: 'Desarrollo',
+    date: 'Septiembre 2024',
+    description: 'Implementación del código, integrando React y optimizando el rendimiento.',
+    image: '/assets/img/desarrollo.jpg',
+    icon: Clock
+  },
+  {
+    title: 'Lanzamiento',
+    date: 'Noviembre 2024',
+    description: 'Despliegue exitoso y monitorización del rendimiento en producción.',
+    image: '/assets/img/despliegue.png  ',
+    icon: Rocket
+  }
+];
+---
+
+<div class="min-h-screen bg-gradient-to-b from-[#393b41] to-[#1a1b1e] py-16 px-4 sm:px-6 lg:px-8 text-white">
+    <div class="flex flex-row items-center justify-center gap-2 max-w-7xl mx-auto mb-4">
+        <a href="/">
+            <img src="/assets/img/logoGiron.svg" alt="Logo Personal" class="w-28 object-cover" />
+        </a>
+        <div class="flex items-center gap-2 text-xs">
+            <span class="text-emerald-400">DESARROLLADOR WEB</span>
+            <span class="text-zinc-500">|</span>
+            <span class="text-zinc-500">BACKEND DEVELOPER</span>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto">
+      {/* Título y Descripción */}
+      <div class="text-center mb-16">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-tight leading-tight text-gray-900 dark:text-white">
+          Sistema de Logistica y Transporte
+        </h1>
+        <p class="text-zinc-400 text-sm mt-2">
+            Fletex es un sistema de logística y transporte. Este proyecto busca ofrecer soluciones para la gestión y optimización de servicios de transporte y logística, facilitando el seguimiento y administración de envíos y flotas de vehículos.
+        </p>
+      </div>
+
+      {/* Timeline */}
+      <div class="relative">
+        {/* Línea conectora */}
+        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-200" />
+
+        {/* Items del Timeline */}
+        <div class="space-y-12 md:space-y-0">
+          {timelineData.map((item, index) => (
+            <div class={`relative md:grid md:grid-cols-2 md:gap-8 md:items-center ${
+              index % 2 === 0 ? 'md:justify-items-end' : 'md:justify-items-start'
+            }`}>
+              {/* Contenedor de la tarjeta */}
+              <div class={`group relative  bg-[#232529] border border-[#2f3037] rounded-2xl p-6
+                ${index % 2 === 0 ? 'md:col-start-1' : 'md:col-start-2'}`}>
+                {/* Icono */}
+                <div class="md:absolute static mb-4 md:mb-0 md:-top-4 md:left-1/2 md:-translate-x-1/2 bg-black/20 backdrop-blur-sm rounded-full p-3">
+                  <item.icon className="w-6 h-6 text-[#34d399]" />
+                </div>
+
+                {/* Contenido */}
+                <div class="mt-4">
+                  <h3 class="text-md font-semibold text-white mb-2">{item.title}</h3>
+                  <p class="text-zinc-400 text-sm mb-2">{item.date}</p>
+                  <div class="relative overflow-hidden rounded-lg mb-4 aspect-video">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <p class="text-zinc-300">{item.description}</p>
+                </div>
+              </div>
+
+              {/* Espaciador para mantener el grid alineado */}
+              <div class={`hidden md:block ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1'}`} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-3">
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="/assets/img/fletex/1.png" alt="Gallery image" />
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="/assets/img/fletex/2.png" alt="Gallery image" />
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="/assets/img/fletex/3.png" alt="Gallery image" />
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="/assets/img/fletex/4.png" alt="Gallery image" />
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="/assets/img/fletex/5.png" alt="Gallery image" />
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="/assets/img/fletex/6.png" alt="Gallery image" />
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="/assets/img/fletex/7.png" alt="Gallery image" />
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="/assets/img/fletex/8.png" alt="Gallery image" />
+        </div>
+    </div>
+
+  </div>
+
+<style>
+    body {
+  --sb-track-color: #1a1b1e;
+  --sb-thumb-color: #34d399;
+  --sb-size: 14px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+      scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+}
+</style>
