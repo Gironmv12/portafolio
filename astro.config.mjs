@@ -12,4 +12,12 @@ export default defineConfig({
 
   output: 'server',
   adapter: netlify(),
+
+  vite:{
+    server:{
+      headers:{
+        'Content_Type': 'text/html; charset=utf-8',
+      }
+    }
+  }
 });

@@ -1,6 +1,6 @@
 ---
 
-import { Coffee, ArrowUpRight} from 'lucide-astro'
+import { Coffee, ArrowUpRight, ChevronRight } from 'lucide-astro'
 ---
 <div class="p-4 md:p-16">
     {/* Header */}
@@ -8,95 +8,78 @@ import { Coffee, ArrowUpRight} from 'lucide-astro'
       <div class="space-y-4">
         <div class="flex items-center gap-3">
           <div class="bg-zinc-800 p-3 rounded-xl">
-            <Coffee class="w-6 h-6 text-[#34d399]" />
+            <img src="/assets/img/logoGiron.svg" alt="Logo Giron" class="w-6 h-6" />
           </div>
-          <h2 class="text-2xl md:text-4xl font-semibold text-white">Personal Projects</h2>
+          <h2 class="text-2xl md:text-4xl font-semibold text-white">Proyectos personales</h2>
         </div>
         <p class="text-zinc-400 text-sm md:text-base">Una recopilación de todos los proyectos que alimentan mi creatividad</p>
       </div>
     </div>
 
     {/* Projects Grid */}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="#" class="group" target="_blank">
-            <div class="relative bg-[#232529] border border-[#2f3037] rounded-2xl p-6 aspect-[4/5] overflow-hidden transition-transform hover:scale-[1.02]">
-                <span class="absolute top-4 right-4 text-sm bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full z-10 text-[#34d399]">
-                    2025 - Presente
-                </span>
-                <div class="h-full flex flex-col justify-between relative z-10">
-                    <div class="mx-auto mt-8 relative">
-                        <img 
-                            src="/assets/img/blackclassic.png" 
-                            alt="Badges"
-                            class="w-2/4 object-cover mx-auto"
-                        />
-                    </div>
-                    <div>
-                        <h3 class="text-md font-semibold text-white truncate">Software Bar BlackClassic</h3>
-                        <p class="text-zinc-400 text-sm">Software Bar BlackClassic es un sistema integral de gestión diseñado específicamente para bares y restaurantes, que combina eficiencia y elegancia en cada función</p>
-                        <ul class="mt-2 text-sm text-zinc-300">
-                            <li>Rol: Desarrollador Backend.</li>
-                            <li>Tecnologías: NODE JS, REACT JS, Tailwind CSS, MySQL, APIs Restful, Git, Postman.</li>
-                            <li>Funcionalidad destacada: Gestión de Reservas Dinámica,Generación Automática de Comandas y Tickets .</li>
-                        </ul>
-                    </div>
+    
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* Card 1 - White Glow */}
+        <div class="group relative rounded-xl bg-gradient-to-b from-black via-black to-[#efefef] p-[1px] transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]">
+          <div class="absolute inset-0 rounded-xl bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+          <div class="relative h-full rounded-xl bg-gradient-to-b from-[#515255] to-[#232529] p-6 flex flex-col">
+            <div class="flex-1 flex items-center justify-center py-12">
+              <div class="w-32 h-40">
+                <img src="/assets/img/gato-vino_white.png" alt="" class="w-full h-full object-contain">
+              </div>
+            </div>
+            <div class="mt-auto">
+              <div class="flex items-center text-xs text-[#A7AAB4]">
+                <span>2025 - Presente</span>
+                <button class="ml-auto flex h-8 w-8 items-center justify-center rounded-full text-[#A7AAB4] transition hover:bg-gray-600">
+                  <ChevronRight class="h-4 w-4" />
+                </button>
+              </div>
+              <h3 class="mt-2 text-lg font-semibold text-[#FFFFFF]">Software Bar BlackClassic</h3>
+            </div>
+          </div>
+        </div>
+        {/* Card 2 - White Glow */}
+
+        <div class="group relative rounded-xl bg-gradient-to-b from-black via-black to-[#F4D055] p-[1px] transition-all duration-300 hover:shadow-[0_0_25px_#f4cf5571]">
+            <div class="absolute inset-0 rounded-xl bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div class="relative h-full rounded-xl bg-gradient-to-b from-[#f4cf55a2] to-[#232529] p-6 flex flex-col">
+              <div class="flex-1 flex items-center justify-center py-12">
+                <div class="w-52">
+                  <img src="/assets/img/logo_siresu_gold.png" alt="" class="w-full h-full object-contain">
                 </div>
+              </div>
+              <div class="mt-auto">
+                <div class="flex items-center text-xs text-[#A7AAB4]">
+                  <span>2024 - Presente</span>
+                  <button class="ml-auto flex h-8 w-8 items-center justify-center rounded-full text-[#A7AAB4] transition hover:bg-gray-600">
+                    <ChevronRight class="h-4 w-4" />
+                  </button>
+                </div>
+                <h3 class="mt-2 text-lg font-semibold text-[#FFFFFF]">Biblioteca UNACH</h3>
+              </div>
+            </div>
+        </div>
+
+        {/* Card 3 - White Glow */}
+        <a href="/fletexAbout" class="group relative rounded-xl bg-gradient-to-b from-black via-black to-[#6D98ED] p-[1px] transition-all duration-300 hover:shadow-[0_0_25px_#4a74e784]">
+            <div class="absolute inset-0 rounded-xl bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div class="relative h-full rounded-xl bg-gradient-to-b from-[#4a74e7c1] to-[#232529] p-6 flex flex-col">
+              <div class="flex-1 flex items-center justify-center py-12">
+            <div class="w-52">
+              <img src="/assets/img/fletexlogo.png" alt="" class="w-full h-full object-contain">
+            </div>
+              </div>
+              <div class="mt-auto">
+            <div class="flex items-center text-xs text-[#A7AAB4]">
+              <span>2024</span>
+              <button class="ml-auto flex h-8 w-8 items-center justify-center rounded-full text-[#A7AAB4] transition hover:bg-gray-600">
+                <ChevronRight class="h-4 w-4" />
+              </button>
+            </div>
+            <h3 class="mt-2 text-lg font-semibold text-[#FFFFFF]">Sistema de logística y transporte</h3>
+              </div>
             </div>
         </a>
-      {/* Project Card 1 */}
-    <a href="https://github.com/Gironmv12/editorial.git" class="group" target="_blank">
-        <div class="relative bg-[#232529] border border-[#2f3037] rounded-2xl p-6 aspect-[4/5] overflow-hidden transition-transform hover:scale-[1.02]">
-            <span class="absolute top-4 right-4 text-sm bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full z-10 text-[#34d399]">
-                2024 - presente
-            </span>
-            <div class="h-full flex flex-col justify-between relative z-10">
-                <div class="mx-auto mt-8 relative">
-                    <img 
-                        src="/assets/img/logoSiresu.png" 
-                        alt="Badges"
-                        class="w-2/4 object-cover mx-auto"
-                    />
-                </div>
-                <div>
-                    <h3 class="text-md font-semibold text-white truncate">Sistema de Biblioteca para la Editorial UNACH</h3>
-                    <p class="text-zinc-400 text-sm">Diseñé y desarrollé un sistema para administrar libros y gestionar la cartelera de publicaciones de la UNACH.</p>
-                    <ul class="mt-2 text-sm text-zinc-300">
-                        <li>Rol: Desarrollador FullStack.</li>
-                        <li>Tecnologías: PHP, Laravel, Tailwind CSS, MySQL, APIs Restful, Git, Postman.</li>
-                        <li>Funcionalidad destacada: Creación de APIs para integrar el sistema con otras plataformas.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </a>
-
-      {/* Project Card 2 */}
-    <a href="/aboutFletex" class="group">
-        <div class="relative bg-[#232529] border border-[#2f3037] rounded-2xl p-6 aspect-[4/5] overflow-hidden transition-transform hover:scale-[1.02]">
-            
-            <span class="absolute top-4 right-4 text-sm bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full z-10 text-[#34d399]">
-                2024
-            </span>
-            <div class="h-full flex flex-col justify-between relative z-10">
-                <div class="mx-auto mt-8 relative">
-                    <img 
-                        src="/assets/img/fletexlogo.png" 
-                        alt="Badges"
-                        class="w-2/4 object-cover mx-auto"
-                    />
-                </div>
-                <div>
-                    <h3 class="text-md font-semibold text-white truncate">Sistema de Logistica y Transporte</h3>
-                    <p class="text-zinc-400 text-sm">Desarrollé un sistema integral de gestión logística y transporte enfocado en optimizar la planificación, seguimiento y control de recursos y flujos de transporte en toda la cadena de suministro.</p>
-                    <ul class="mt-2 text-sm text-zinc-300">
-                        <li >Rol: Desarrollador FullStack.</li>
-                        <li>Tecnologías: Node.js, Express.js, React.js, Tailwind CSS.</li>
-                        <li>Funcionalidad destacada: Gestión eficiente de rutas y recursos logísticos.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </a>
-
     </div>
-  </div>
+</div>
