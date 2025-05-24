@@ -1,0 +1,311 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <div class="min-h-screen bg-gradient-to-b from-[#B800DA] to-[#1a1b1e] p-4 sm:p-6 md:p-8 text-white">
+    <!-- Modal -->
+    <div id="imageModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm">
+      <div class="relative max-h-[90vh] max-w-[90vw] p-4">
+        <img id="modalImage" src="" alt="Imagen ampliada" class="max-h-[85vh] max-w-[85vw] object-contain rounded-lg shadow-2xl" />
+        <button id="closeModal" class="absolute -top-4 -right-4 rounded-full bg-red-500 p-2 text-white hover:bg-red-600 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Paso 1: Verificar las imágenes
+      const images = document.querySelectorAll('.aspect-\\[9\\/16\\] img');
+      console.log('Imágenes encontradas:', images.length);
+
+      // Paso 2: Crear la funcionalidad del modal
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage') as HTMLImageElement;
+      const closeBtn = document.getElementById('closeModal');
+
+      // Función para abrir el modal
+      function openModal(imgSrc: string): void {
+        if (modal && modalImg) {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          modalImg.src = imgSrc;
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      // Función para cerrar el modal
+      function closeModal(): void {
+        if (modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+          document.body.style.overflow = 'auto';
+        }
+      }
+
+      // Agregar eventos a las imágenes
+      images.forEach((img) => {
+        if (img instanceof HTMLImageElement) {
+          img.addEventListener('click', () => {
+            openModal(img.src);
+          });
+        }
+      });
+
+      // Eventos para cerrar el modal
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+      }
+
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+
+        // Cerrar con ESC
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+          }
+        });
+      }
+    </script>
+
+    <div class="mx-auto max-w-5xl">
+      {/* Header */}
+      <div class="mb-8 mt-12 text-center">
+        <div class="mb-4 flex flex-col sm:flex-row items-center justify-center text-sm font-light tracking-wide">
+          <a href="/"><img src="/assets/img/logoGiron.svg" alt="Logo" class="h-8 mb-2 sm:mb-0" /></a>
+          <span class="mx-2 inline-block w-6 border-t border-white/30"></span>
+          <span>28 de marzo del 2025</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-wide md:text-5xl">Aplicacion de control de asistencia</h1>
+      </div>
+
+      {/* Main Content Card */}
+      <div class="mt-16 overflow-hidden rounded-3xl shadow-2xl">
+        <img src="/assets/img/portada_assisControl.jpg" alt="Portada Fletex" class="w-full md:h-[400px] h-64 object-cover" />
+      </div>
+    </div>
+
+    {/* Project Details Section */}
+    <div class="mt-16 mx-auto max-w-5xl p-6 sm:p-10 rounded-xl bg-[#1a1b1e]">
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-3">
+        {/* Left Column */}
+        <div class="md:col-span-1">
+          <div class="mb-10">
+            <h2 class="mb-4 text-sm font-bold uppercase tracking-wider text-gray-300">Mi Rol</h2>
+            <p class="text-base text-gray-400">Desarrollador FullStack</p>
+          </div>
+          <div>
+            <h2 class="mb-4 text-sm font-bold uppercase tracking-wider text-gray-300">Cronología</h2>
+            <p class="text-base text-gray-400">De abril a mayo de 2024</p>
+          </div>
+        </div>
+        {/* Right Column */}
+        <div class="md:col-span-2">
+          <h2 class="mb-6 text-sm font-bold uppercase tracking-wider text-gray-300">Visión general</h2>
+          <p class="mb-6 text-base leading-relaxed text-gray-400">
+            Desarrollé AssisControl, una aplicación diseñada para gestionar la asistencia de forma eficiente y controlar el acceso de personal. Para construirla, separé la lógica en dos partes principales: <br />
+            Creé la interfaz con la que interactúan los usuarios utilizando principalmente TypeScript, lo que me permitió desarrollar una experiencia de usuario moderna y robusta. <br />
+            Toda la lógica de negocio, manejo de datos y la comunicación con la base de datos la implementé con JavaScript, asegurando un sistema ágil y funcional.
+          </p>
+        </div>
+      </div>
+      {/* Technologies Used Section */}
+      <div class="mb-10 pb-10">
+        <h2 class="mb-6 text-sm font-bold uppercase tracking-wider text-gray-300">Tecnologías utilizadas</h2>
+        <div class="flex flex-wrap gap-6">
+          {/* NodeJs */}
+          <div class="flex flex-col items-center">
+            <div class="flex h-14 w-14 items-center justify-center p-3">
+              <svg viewBox="0 0 256 292" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="292"><defs><linearGradient id="a" x1="68.188%" x2="27.823%" y1="17.487%" y2="89.755%"><stop offset="0%" stop-color="#41873F"/><stop offset="32.88%" stop-color="#418B3D"/><stop offset="63.52%" stop-color="#419637"/><stop offset="93.19%" stop-color="#3FA92D"/><stop offset="100%" stop-color="#3FAE2A"/></linearGradient><linearGradient id="c" x1="43.277%" x2="159.245%" y1="55.169%" y2="-18.306%"><stop offset="13.76%" stop-color="#41873F"/><stop offset="40.32%" stop-color="#54A044"/><stop offset="71.36%" stop-color="#66B848"/><stop offset="90.81%" stop-color="#6CC04A"/></linearGradient><linearGradient id="f" x1="-4.389%" x2="101.499%" y1="49.997%" y2="49.997%"><stop offset="9.192%" stop-color="#6CC04A"/><stop offset="28.64%" stop-color="#66B848"/><stop offset="59.68%" stop-color="#54A044"/><stop offset="86.24%" stop-color="#41873F"/></linearGradient><path id="b" d="M134.923 1.832c-4.344-2.443-9.502-2.443-13.846 0L6.787 67.801C2.443 70.244 0 74.859 0 79.745v132.208c0 4.887 2.715 9.502 6.787 11.945l114.29 65.968c4.344 2.444 9.502 2.444 13.846 0l114.29-65.968c4.344-2.443 6.787-7.058 6.787-11.945V79.745c0-4.886-2.715-9.501-6.787-11.944L134.923 1.832Z"/><path id="e" d="M134.923 1.832c-4.344-2.443-9.502-2.443-13.846 0L6.787 67.801C2.443 70.244 0 74.859 0 79.745v132.208c0 4.887 2.715 9.502 6.787 11.945l114.29 65.968c4.344 2.444 9.502 2.444 13.846 0l114.29-65.968c4.344-2.443 6.787-7.058 6.787-11.945V79.745c0-4.886-2.715-9.501-6.787-11.944L134.923 1.832Z"/></defs><path fill="url(#a)" d="M134.923 1.832c-4.344-2.443-9.502-2.443-13.846 0L6.787 67.801C2.443 70.244 0 74.859 0 79.745v132.208c0 4.887 2.715 9.502 6.787 11.945l114.29 65.968c4.344 2.444 9.502 2.444 13.846 0l114.29-65.968c4.344-2.443 6.787-7.058 6.787-11.945V79.745c0-4.886-2.715-9.501-6.787-11.944L134.923 1.832Z"/><mask id="d" fill="#fff"><use xlink:href="#b"/></mask><path fill="url(#c)" d="M249.485 67.8 134.65 1.833c-1.086-.542-2.443-1.085-3.529-1.357L2.443 220.912c1.086 1.357 2.444 2.443 3.8 3.258l114.834 65.968c3.258 1.9 7.059 2.443 10.588 1.357L252.47 70.515c-.815-1.086-1.9-1.9-2.986-2.714Z" mask="url(#d)"/><mask id="g" fill="#fff"><use xlink:href="#e"/></mask><path fill="url(#f)" d="M249.756 223.898c3.258-1.9 5.701-5.158 6.787-8.687L130.579.204c-3.258-.543-6.787-.272-9.773 1.628L6.786 67.53l122.979 224.238c1.628-.272 3.529-.815 5.158-1.63l114.833-66.239Z" mask="url(#g)"/></svg>
+            </div>
+            <span class="mt-2 text-xs text-gray-400">NODE.JS</span>
+          </div>
+          {/* Express JS */}
+          <div class="flex flex-col items-center">
+            <div class="flex h-14 w-14 items-center justify-center p-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64" height="64"><path fill="#fff" d="M32 24.795c-1.164.296-1.884.013-2.53-.957l-4.594-6.356-.664-.88-5.365 7.257c-.613.873-1.256 1.253-2.4.944l6.87-9.222-6.396-8.33c1.1-.214 1.86-.105 2.535.88l4.765 6.435 4.8-6.4c.615-.873 1.276-1.205 2.38-.883l-2.48 3.288-3.36 4.375c-.4.5-.345.842.023 1.325L32 24.795zM.008 15.427l.562-2.764C2.1 7.193 8.37 4.92 12.694 8.3c2.527 1.988 3.155 4.8 3.03 7.95H1.48c-.214 5.67 3.867 9.092 9.07 7.346 1.825-.613 2.9-2.042 3.438-3.83.273-.896.725-1.036 1.567-.78-.43 2.236-1.4 4.104-3.45 5.273-3.063 1.75-7.435 1.184-9.735-1.248C1 21.6.434 19.812.18 17.9c-.04-.316-.12-.617-.18-.92q.008-.776.008-1.552zm1.498-.38h12.872c-.084-4.1-2.637-7.012-6.126-7.037-3.83-.03-6.58 2.813-6.746 7.037z"/></svg>
+            </div>
+            <span class="mt-2 text-xs text-gray-400">EXPRESS.JS</span>
+          </div>
+          {/* SEQUELIZE */}
+          <div class="flex flex-col items-center">
+            <div class="flex h-14 w-14 items-center justify-center p-3">
+              <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 256 296">
+                <path d="M219 94.4V201l-90.6 53.5-.8.8V295l.8.8L256 222.2V73.7l-1.2-.3-36 20 .2 1" fill="#2F406A"/>
+                <path d="m37.6 201.8 90.8 52.7V296L0 221.9V74l1.3-.1 35.9 20.8.4 1.2v106" fill="#2379BD"/>
+                <path d="M37.6 95.8 0 74 128.1 0 256 73.7l-37 20.7-90.9-51.9-90.5 53.3" fill="#03AFEF"/>
+                <path d="m126.9 189.6-1-1v-40l1-.5.2-1 34.3-20 1 .2v41.3l-35.5 21" fill="#2F406A"/>
+                <path d="M90.7 169.9V127h1l34.9 20.3.3.8v41.5L90.7 170" fill="#2379BD"/>
+                <path d="m126.3 106-35.6 21 36.2 21.1 35.6-20.8-36.2-21.3" fill="#03AFEF"/>
+                <path d="m82.6 215.7-1-1v-40l1-.5.2-1 34.3-20 1 .2v41.3l-35.5 21" fill="#2F406A"/>
+                <path d="M46.4 196V153h1l34.9 20.3.3.8v41.5L46.4 196" fill="#2379BD"/>
+                <path d="m82 132-35.6 21.1 36.2 21.1 35.6-20.8L82 132.1" fill="#03AFEF"/>
+                <path d="m174.3 216.7-1-1v-40l1-.5.3-1 34.3-20 1 .2v41.3l-35.6 21" fill="#2F406A"/>
+                <path d="M138.2 197V154h1l34.9 20.3.3.8v41.5L138.1 197" fill="#2379BD"/>
+                <path d="m173.8 133-35.6 21.1 36.2 21.1 35.6-20.8-36.2-21.3" fill="#03AFEF"/>
+                <path d="m130 242.8-1-1v-40l1-.5.3-1 34.3-20 1 .2v41.3l-35.6 21" fill="#2F406A"/>
+                <path d="M93.8 223v-42.8h1l35 20.3.2.8v41.5l-36.2-19.7" fill="#2379BD"/>
+                <path d="m129.4 159.2-35.6 21 36.2 21.1 35.6-20.8-36.2-21.3" fill="#03AFEF"/>
+                <path d="m126.9 132.9-1-1v-40l1-.6.2-1 34.3-20 1 .3v41.2l-35.5 21" fill="#2F406A"/>
+                <path d="M90.7 113V70.4h1l34.9 20.2.3.8V133L90.7 113" fill="#2379BD"/>
+                <path d="m126.3 49.2-35.6 21 36.2 21.1 35.6-20.7-36.2-21.4" fill="#03AFEF"/>
+                <path d="m82.6 159-1-1v-40l1-.6.2-1 34.3-20 1 .3v41.2l-35.5 21" fill="#2F406A"/>
+                <path d="M46.4 139.2V96.4h1l34.9 20.2.3.8V159l-36.2-19.8" fill="#2379BD"/>
+                <path d="m82 75.3-35.6 21 36.2 21.1 35.6-20.7L82 75.3" fill="#03AFEF"/>
+                <path d="m174.3 160-1-1v-40l1-.6.3-1 34.3-20 1 .3v41.2l-35.6 21" fill="#2F406A"/>
+                <path d="M138.2 140.2V97.4h1l34.9 20.2.3.8V160l-36.2-19.8" fill="#2379BD"/>
+                <path d="m173.8 76.3-35.6 21 36.2 21.1L210 97.7l-36.2-21.4" fill="#03AFEF"/>
+                <path d="m130 186-1-1v-40l1-.5.3-1 34.3-20 1 .3V165L130 186" fill="#2F406A"/>
+                <path d="M93.8 166.3v-42.8h1l35 20.2.2.8v41.6l-36.2-19.8" fill="#2379BD"/>
+                <path d="m129.4 102.4-35.6 21 36.2 21.1 35.6-20.7-36.2-21.4" fill="#03AFEF"/>
+              </svg>
+            </div>
+            <span class="mt-2 text-xs text-gray-400">SEQUELIZE</span>
+          </div>
+          {/* JWT */}
+          <div class="flex flex-col items-center">
+            <div class="flex h-14 w-14 items-center justify-center p-3">
+              <svg viewBox="0 0 256 257" width="256" height="257" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path fill="#FFF" d="M147.386 69.071 147.129 0h-38.515l.257 69.071 19.257 26.448zM108.871 187.442v69.328h38.515v-69.328l-19.258-26.447z"/><path fill="#00F2E6" d="m147.386 187.442 40.57 55.976 31.069-22.596-40.57-55.975-31.069-10.015zM108.871 69.071 68.044 13.095 36.975 35.691l40.57 55.976 31.326 10.014z"/><path fill="#00B9F1" d="M77.545 91.667 11.811 70.355 0 106.816l65.733 21.569 31.069-10.271zM159.198 138.399l19.257 26.448 65.734 21.311L256 149.697l-65.733-21.312z"/><path fill="#D63AFF" d="M190.267 128.385 256 106.816l-11.811-36.461-65.734 21.312-19.257 26.447zM65.733 128.385 0 149.697l11.811 36.461 65.734-21.311 19.257-26.448z"/><path fill="#FB015B" d="m77.545 164.847-40.57 55.975 31.069 22.596 40.827-55.976v-32.61zM178.455 91.667l40.57-55.976-31.069-22.596-40.57 55.976v32.61z"/></svg>
+            </div>
+            <span class="mt-2 text-xs text-gray-400">JWT</span>
+          </div>
+          {/* MYSQL */}
+          <div class="flex flex-col items-center">
+            <div class="flex h-14 w-14 items-center justify-center p-3">
+              <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 432.071 445.383"><g style="fill-rule:nonzero;clip-rule:nonzero;fill:none;stroke:#fff;stroke-width:12.4651;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4"><path d="M323.205 324.227c2.833-23.601 1.984-27.062 19.563-23.239l4.463.392c13.517.615 31.199-2.174 41.587-7 22.362-10.376 35.622-27.7 13.572-23.148-50.297 10.376-53.755-6.655-53.755-6.655 53.111-78.803 75.313-178.836 56.149-203.322-52.27-66.789-142.748-35.206-144.262-34.386l-.482.089c-9.938-2.062-21.06-3.294-33.554-3.496-22.761-.374-40.032 5.967-53.133 15.904 0 0-161.408-66.498-153.899 83.628 1.597 31.936 45.777 241.655 98.47 178.31 19.259-23.163 37.871-42.748 37.871-42.748 9.242 6.14 20.307 9.272 31.912 8.147l.897-.765c-.281 2.876-.157 5.689.359 9.019-13.572 15.167-9.584 17.83-36.723 23.416-27.457 5.659-11.326 15.734-.797 18.367 12.768 3.193 42.305 7.716 62.268-20.224l-.795 3.188c5.325 4.26 4.965 30.619 5.72 49.452.756 18.834 2.017 36.409 5.856 46.771 3.839 10.36 8.369 37.05 44.036 29.406 29.809-6.388 52.6-15.582 54.677-101.107" style="fill:#000;stroke:#000;stroke-width:37.3953;stroke-linecap:butt;stroke-linejoin:miter"/><path stroke="none" d="M402.395 271.23c-50.302 10.376-53.76-6.655-53.76-6.655 53.111-78.808 75.313-178.843 56.153-203.326-52.27-66.785-142.752-35.2-144.262-34.38l-.486.087c-9.938-2.063-21.06-3.292-33.56-3.496-22.761-.373-40.026 5.967-53.127 15.902 0 0-161.411-66.495-153.904 83.63 1.597 31.938 45.776 241.657 98.471 178.312 19.26-23.163 37.869-42.748 37.869-42.748 9.243 6.14 20.308 9.272 31.908 8.147l.901-.765c-.28 2.876-.152 5.689.361 9.019-13.575 15.167-9.586 17.83-36.723 23.416-27.459 5.659-11.328 15.734-.796 18.367 12.768 3.193 42.307 7.716 62.266-20.224l-.796 3.188c5.319 4.26 9.054 27.711 8.428 48.969-.626 21.259-1.044 35.854 3.147 47.254 4.191 11.4 8.368 37.05 44.042 29.406 29.809-6.388 45.256-22.942 47.405-50.555 1.525-19.631 4.976-16.729 5.194-34.28l2.768-8.309c3.192-26.611.507-35.196 18.872-31.203l4.463.392c13.517.615 31.208-2.174 41.591-7 22.358-10.376 35.618-27.7 13.573-23.148z" style="fill:#336791;stroke:none"/><path d="M215.866 286.484c-1.385 49.516.348 99.377 5.193 111.495 4.848 12.118 15.223 35.688 50.9 28.045 29.806-6.39 40.651-18.756 45.357-46.051 3.466-20.082 10.148-75.854 11.005-87.281M173.104 38.256S11.583-27.76 19.092 122.365c1.597 31.938 45.779 241.664 98.473 178.316 19.256-23.166 36.671-41.335 36.671-41.335M260.349 26.207c-5.591 1.753 89.848-34.889 144.087 34.417 19.159 24.484-3.043 124.519-56.153 203.329"/><path d="M348.282 263.953s3.461 17.036 53.764 6.653c22.04-4.552 8.776 12.774-13.577 23.155-18.345 8.514-59.474 10.696-60.146-1.069-1.729-30.355 21.647-21.133 19.96-28.739-1.525-6.85-11.979-13.573-18.894-30.338-6.037-14.633-82.796-126.849 21.287-110.183 3.813-.789-27.146-99.002-124.553-100.599-97.385-1.597-94.19 119.762-94.19 119.762" style="stroke-linejoin:bevel"/><path d="M188.604 274.334c-13.577 15.166-9.584 17.829-36.723 23.417-27.459 5.66-11.326 15.733-.797 18.365 12.768 3.195 42.307 7.718 62.266-20.229 6.078-8.509-.036-22.086-8.385-25.547-4.034-1.671-9.428-3.765-16.361 3.994z"/><path d="M187.715 274.069c-1.368-8.917 2.93-19.528 7.536-31.942 6.922-18.626 22.893-37.255 10.117-96.339-9.523-44.029-73.396-9.163-73.436-3.193-.039 5.968 2.889 30.26-1.067 58.548-5.162 36.913 23.488 68.132 56.479 64.938"/><path d="M172.517 141.7c-.288 2.039 3.733 7.48 8.976 8.207 5.234.73 9.714-3.522 9.998-5.559.284-2.039-3.732-4.285-8.977-5.015-5.237-.731-9.719.333-9.996 2.367z" style="fill:#fff;stroke-width:4.155;stroke-linecap:butt;stroke-linejoin:miter"/><path d="M331.941 137.543c.284 2.039-3.732 7.48-8.976 8.207-5.238.73-9.718-3.522-10.005-5.559-.277-2.039 3.74-4.285 8.979-5.015 5.239-.73 9.718.333 10.002 2.368z" style="fill:#fff;stroke-width:2.0775;stroke-linecap:butt;stroke-linejoin:miter"/><path d="M350.676 123.432c.863 15.994-3.445 26.888-3.988 43.914-.804 24.748 11.799 53.074-7.191 81.435"/></g></svg>
+            </div>
+            <span class="mt-2 text-xs text-gray-400">POSTGRESQL</span>
+          </div>
+          {/* REACT */}
+          <div class="flex flex-col items-center">
+            <div class="flex h-14 w-14 items-center justify-center p-3">
+              <svg width="569px" height="512px" viewBox="0 0 569 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g fill="none" fill-rule="evenodd">
+                  <g transform="translate(-227, -256)" fill="#58C4DC" fill-rule="nonzero">
+                    <g transform="translate(227, 256)">
+                      <path d="M285.5,201 C255.400481,201 231,225.400481 231,255.5 C231,285.599519 255.400481,310 285.5,310 C315.599519,310 340,285.599519 340,255.5 C340,225.400481 315.599519,201 285.5,201" id="Path"></path>
+                      <path d="M568.959856,255.99437 C568.959856,213.207656 529.337802,175.68144 466.251623,150.985214 C467.094645,145.423543 467.85738,139.922107 468.399323,134.521063 C474.621631,73.0415145 459.808523,28.6686204 426.709856,9.5541429 C389.677085,-11.8291748 337.36955,3.69129898 284.479928,46.0162134 C231.590306,3.69129898 179.282771,-11.8291748 142.25,9.5541429 C109.151333,28.6686204 94.3382249,73.0415145 100.560533,134.521063 C101.102476,139.922107 101.845139,145.443621 102.708233,151.02537 C97.4493791,153.033193 92.2908847,155.161486 87.3331099,157.39017 C31.0111824,182.708821 0,217.765415 0,255.99437 C0,298.781084 39.6220545,336.307301 102.708233,361.003527 C101.845139,366.565197 101.102476,372.066633 100.560533,377.467678 C94.3382249,438.947226 109.151333,483.32012 142.25,502.434597 C153.629683,508.887578 166.52439,512.186771 179.603923,511.991836 C210.956328,511.991836 247.567589,495.487529 284.479928,465.972527 C321.372196,495.487529 358.003528,511.991836 389.396077,511.991836 C402.475265,512.183856 415.36922,508.884856 426.75,502.434597 C459.848667,483.32012 474.661775,438.947226 468.439467,377.467678 C467.897524,372.066633 467.134789,366.565197 466.291767,361.003527 C529.377946,336.347457 569,298.761006 569,255.99437 M389.155214,27.1025182 C397.565154,26.899606 405.877839,28.9368502 413.241569,33.0055186 C436.223966,46.2772304 446.540955,82.2775015 441.522965,131.770345 C441.181741,135.143488 440.780302,138.556788 440.298575,141.990165 C414.066922,134.08804 387.205771,128.452154 360.010724,125.144528 C343.525021,103.224055 325.192524,82.7564475 305.214266,63.9661533 C336.586743,39.7116483 366.032313,27.1025182 389.135142,27.1025182 M378.356498,310.205598 C368.204912,327.830733 357.150626,344.919965 345.237759,361.405091 C325.045049,363.479997 304.758818,364.51205 284.459856,364.497299 C264.167589,364.51136 243.888075,363.479308 223.702025,361.405091 C211.820914,344.919381 200.80007,327.83006 190.683646,310.205598 C180.532593,292.629285 171.306974,274.534187 163.044553,255.99437 C171.306974,237.454554 180.532593,219.359455 190.683646,201.783142 C200.784121,184.229367 211.770999,167.201087 223.601665,150.764353 C243.824636,148.63809 264.145559,147.579168 284.479928,147.591877 C304.772146,147.579725 325.051559,148.611772 345.237759,150.68404 C357.109048,167.14607 368.136094,184.201112 378.27621,201.783142 C388.419418,219.363718 397.644825,237.458403 405.915303,255.99437 C397.644825,274.530337 388.419418,292.625022 378.27621,310.205598 M419.724813,290.127366 C426.09516,307.503536 431.324985,325.277083 435.380944,343.334682 C417.779633,348.823635 399.836793,353.149774 381.668372,356.285142 C388.573127,345.871232 395.263781,335.035679 401.740334,323.778483 C408.143291,312.655143 414.144807,301.431411 419.805101,290.207679 M246.363271,390.377981 C258.848032,391.140954 271.593728,391.582675 284.5,391.582675 C297.406272,391.582675 310.232256,391.140954 322.737089,390.377981 C310.880643,404.583418 298.10766,417.997563 284.5,430.534446 C270.921643,417.999548 258.18192,404.585125 246.363271,390.377981 Z M187.311556,356.244986 C169.137286,353.123646 151.187726,348.810918 133.578912,343.334682 C137.618549,325.305649 142.828222,307.559058 149.174827,290.207679 C154.754833,301.431411 160.736278,312.655143 167.239594,323.778483 C173.74291,334.901824 180.467017,345.864539 187.311556,356.285142 M149.174827,221.760984 C142.850954,204.473938 137.654787,186.794745 133.619056,168.834762 C151.18418,163.352378 169.085653,159.013101 187.211197,155.844146 C180.346585,166.224592 173.622478,176.986525 167.139234,188.210257 C160.65599,199.433989 154.734761,210.517173 149.074467,221.760984 M322.616657,121.590681 C310.131896,120.827708 297.3862,120.385987 284.379568,120.385987 C271.479987,120.385987 258.767744,120.787552 246.242839,121.590681 C258.061488,107.383537 270.801211,93.9691137 284.379568,81.4342157 C297.99241,93.9658277 310.765727,107.380324 322.616657,121.590681 Z M401.70019,188.210257 C395.196875,176.939676 388.472767,166.09743 381.527868,155.68352 C399.744224,158.819049 417.734224,163.151949 435.380944,168.654058 C431.331963,186.680673 426.122466,204.426664 419.785029,221.781062 C414.205023,210.55733 408.203506,199.333598 401.720262,188.230335 M127.517179,131.790423 C122.438973,82.3176579 132.816178,46.2973086 155.778503,33.0255968 C163.144699,28.9632474 171.455651,26.9264282 179.864858,27.1225964 C202.967687,27.1225964 232.413257,39.7317265 263.785734,63.9862316 C243.794133,82.7898734 225.448298,103.270812 208.949132,125.204763 C181.761691,128.528025 154.90355,134.14313 128.661281,141.990165 C128.199626,138.556788 127.778115,135.163566 127.456963,131.790423 M98.4529773,182.106474 C101.54406,180.767925 104.695358,179.429376 107.906872,178.090828 C114.220532,204.735668 122.781793,230.7969 133.498624,255.99437 C122.761529,281.241316 114.193296,307.357063 107.8868,334.058539 C56.7434387,313.076786 27.0971497,284.003505 27.0971497,255.99437 C27.0971497,229.450947 53.1907013,202.526037 98.4529773,182.106474 Z M155.778503,478.963143 C132.816178,465.691432 122.438973,429.671082 127.517179,380.198317 C127.838331,376.825174 128.259842,373.431953 128.721497,369.978497 C154.953686,377.878517 181.814655,383.514365 209.009348,386.824134 C225.500295,408.752719 243.832321,429.233234 263.805806,448.042665 C220.069,481.834331 180.105722,492.97775 155.838719,478.963143 M441.502893,380.198317 C446.520883,429.691161 436.203894,465.691432 413.221497,478.963143 C388.974566,493.017906 348.991216,481.834331 305.274481,448.042665 C325.241364,429.232737 343.566681,408.752215 360.050868,386.824134 C387.245915,383.516508 414.107066,377.880622 440.338719,369.978497 C440.820446,373.431953 441.221885,376.825174 441.563109,380.198317 M461.193488,334.018382 C454.869166,307.332523 446.294494,281.231049 435.561592,255.99437 C446.289797,230.744081 454.857778,204.629101 461.173416,177.930202 C512.216417,198.911955 541.942994,227.985236 541.942994,255.99437 C541.942994,284.003505 512.296705,313.076786 461.153344,334.058539" id="Shape"></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <span class="mt-2 text-xs text-gray-400">REACT NATIVE</span>
+          </div>
+          {/* TAILWIND */}
+          <div class="flex flex-col items-center">
+            <div class="flex h-14 w-14 items-center justify-center p-3">
+              <svg viewBox="0 0 256 256" width="256" height="256" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path d="M20 0h216c11.046 0 20 8.954 20 20v216c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20V20C0 8.954 8.954 0 20 0Z" fill="#3178C6"/><path d="M150.518 200.475v27.62c4.492 2.302 9.805 4.028 15.938 5.179 6.133 1.151 12.597 1.726 19.393 1.726 6.622 0 12.914-.633 18.874-1.899 5.96-1.266 11.187-3.352 15.678-6.257 4.492-2.906 8.048-6.704 10.669-11.394 2.62-4.689 3.93-10.486 3.93-17.391 0-5.006-.749-9.394-2.246-13.163a30.748 30.748 0 0 0-6.479-10.055c-2.821-2.935-6.205-5.567-10.149-7.898-3.945-2.33-8.394-4.531-13.347-6.602-3.628-1.497-6.881-2.949-9.761-4.359-2.879-1.41-5.327-2.848-7.342-4.316-2.016-1.467-3.571-3.021-4.665-4.661-1.094-1.64-1.641-3.495-1.641-5.567 0-1.899.489-3.61 1.468-5.135s2.362-2.834 4.147-3.927c1.785-1.094 3.973-1.942 6.565-2.547 2.591-.604 5.471-.906 8.638-.906 2.304 0 4.737.173 7.299.518 2.563.345 5.14.877 7.732 1.597a53.669 53.669 0 0 1 7.558 2.719 41.7 41.7 0 0 1 6.781 3.797v-25.807c-4.204-1.611-8.797-2.805-13.778-3.582-4.981-.777-10.697-1.165-17.147-1.165-6.565 0-12.784.705-18.658 2.115-5.874 1.409-11.043 3.61-15.506 6.602-4.463 2.993-7.99 6.805-10.582 11.437-2.591 4.632-3.887 10.17-3.887 16.615 0 8.228 2.375 15.248 7.127 21.06 4.751 5.811 11.963 10.731 21.638 14.759a291.458 291.458 0 0 1 10.625 4.575c3.283 1.496 6.119 3.049 8.509 4.66 2.39 1.611 4.276 3.366 5.658 5.265 1.382 1.899 2.073 4.057 2.073 6.474a9.901 9.901 0 0 1-1.296 4.963c-.863 1.524-2.174 2.848-3.93 3.97-1.756 1.122-3.945 1.999-6.565 2.632-2.62.633-5.687.95-9.2.95-5.989 0-11.92-1.05-17.794-3.151-5.875-2.1-11.317-5.25-16.327-9.451Zm-46.036-68.733H140V109H41v22.742h35.345V233h28.137V131.742Z" fill="#FFF"/></svg>
+            </div>
+            <span class="mt-2 text-xs text-gray-400">TYPESCRIPT</span>
+          </div>
+          {/* EXPO GO */}
+          <div class="flex flex-col items-center">
+            <div class="flex h-14 w-14 items-center justify-center p-3">
+              <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 256 231">
+                <path d="M121 85c2-3 5-4 7-4 1 0 5 1 7 4 16 22 43 67 63 101l26 40c7 8 18 3 24-6s8-15 8-22c0-4-88-168-97-182-9-13-11-16-26-16h-11c-14 0-16 3-25 16C88 30 0 194 0 198c0 7 2 13 8 22s17 14 24 6l26-40c20-34 47-79 63-101Z" fill="#fff"/>
+              </svg>
+            </div>
+            <span class="mt-2 text-xs text-gray-400">EXPO GO</span>
+          </div>
+        </div>
+      </div>
+      {/* GitHub Button - Repositioned and Redesigned */}
+      <div class="mt-12 border-t border-gray-800 pt-8 flex justify-between">
+        <a
+          href="https://github.com/Gironmv12/assisControl-backend.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-2 sm:gap-3 rounded-lg border border-[#3374ee]/30 bg-[#1a1b1e] px-4 sm:px-6 py-2 sm:py-3 text-[#3374ee] text-sm sm:text-base transition-all hover:border-[#3374ee] hover:bg-[#3374ee]/10 hover:shadow-[0_0_15px_rgba(51,116,238,0.15)]"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.876.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+          <span class="font-medium">Ver código en GitHub (backend)</span>
+        </a>
+        <a
+          href="https://github.com/Gironmv12/assisControl-app.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-2 sm:gap-3 rounded-lg border border-[#3374ee]/30 bg-[#1a1b1e] px-4 sm:px-6 py-2 sm:py-3 text-[#3374ee] text-sm sm:text-base transition-all hover:border-[#3374ee] hover:bg-[#3374ee]/10 hover:shadow-[0_0_15px_rgba(51,116,238,0.15)]"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.876.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+          <span class="font-medium">Ver código en GitHub (frontend)</span>
+        </a>
+      </div>
+    </div>
+
+    {/* CONTENDEDOR DE ADMINITRADORES */}
+    <div class="mt-16 mx-auto max-w-5xl rounded-xl">
+      <div class="mb-8 mt-16 text-center">
+        <h2 class="text-xl sm:text-2xl font-bold text-gray-300">Pantallas del Administrador</h2>
+        <p class="mt-2 text-sm text-gray-400">Interfaz de usuario para la gestión y control de asistencia</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+        {/* Fila 1 */}
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsE/screen_carga.png" alt="Pantalla de carga" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsE/screen_login.png" alt="Pantalla de login" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsA/screen_home.png" alt="Pantalla de registro" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsA/screen_list_empleados.png" alt="Pantalla principal" class="w-full h-full object-cover" />
+        </div>
+        {/* Fila 2 */}
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsA/screen_crear_empleado.png" alt="Perfil de usuario" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsA/screen_detalles_empleado.png" alt="Registro de asistencia" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsA/screen_list_asistencia.png" alt="Historial de asistencias" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsA/screen_consultar.png" alt="Estadísticas" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsA/screen_editar_Asistenia.png" alt="Estadísticas" class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </div>
+    {/* contenedor de empleados */}
+    <div class="mt-16 mx-auto max-w-5xl rounded-xl">
+      <div class="mb-8 mt-16 text-center">
+        <h2 class="text-xl sm:text-2xl font-bold text-gray-300">Pantallas de los Empleados</h2>
+        <p class="mt-2 text-sm text-gray-400">Interfaz de usuario para el registro y consulta de asistencia por parte de los empleados</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+        {/* Fila 1 */}
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsE/screen_homeE.png" alt="Pantalla de carga" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsE/screen_asistenciaE.png" alt="Pantalla de login" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsE/screen_horariosE.png" alt="Pantalla de registro" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsE/screen_perfilE.png" alt="Pantalla principal" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-[9/16] overflow-hidden cursor-pointer transition-transform hover:scale-105">
+          <img src="/assets/img/mokupsE/screen_home_registerE.png" alt="Pantalla principal" class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
