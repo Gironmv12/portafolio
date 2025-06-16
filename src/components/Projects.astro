@@ -1,6 +1,7 @@
 ---
 
 import { Coffee, ArrowUpRight, ChevronRight, Network } from 'lucide-astro'
+import { Image } from 'astro:assets'
 ---
 <div class="p-4 md:p-16">
     {/* Header */}
@@ -24,7 +25,7 @@ import { Coffee, ArrowUpRight, ChevronRight, Network } from 'lucide-astro'
         <div class="relative h-full rounded-xl bg-gradient-to-b from-[#B800DA] to-[#232529] p-6 flex flex-col">
           <div class="flex-1 flex items-center justify-center py-12">
             <div class="w-32 h-40">
-              <img src="/assets/img/logo_app_assit.png" alt="" class="w-full h-full object-contain">
+              <Image src="/assets/img/logo_app_assit.png" alt="" class="w-full h-full object-contain" width="128" height="128" loading="lazy" />
             </div>
           </div>
           <div class="mt-auto">
@@ -44,7 +45,14 @@ import { Coffee, ArrowUpRight, ChevronRight, Network } from 'lucide-astro'
           <div class="relative h-full rounded-xl bg-gradient-to-b from-[#515255] to-[#232529] p-6 flex flex-col">
             <div class="flex-1 flex items-center justify-center py-12">
               <div class="w-32 h-40">
-                <img src="/assets/img/gato-vino_white.png" alt="" class="w-full h-full object-contain">
+                <Image 
+                  src="/assets/img/gato-vino_white.png" 
+                  alt="" 
+                  class="w-full h-full object-contain"
+                  width="128"
+                  height="160"
+                  loading="lazy"
+                />
               </div>
             </div>
             <div class="mt-auto">
@@ -65,7 +73,14 @@ import { Coffee, ArrowUpRight, ChevronRight, Network } from 'lucide-astro'
             <div class="relative h-full rounded-xl bg-gradient-to-b from-[#f4cf55a2] to-[#232529] p-6 flex flex-col">
               <div class="flex-1 flex items-center justify-center py-12">
                 <div class="w-52">
-                  <img src="/assets/img/logo_siresu_gold.png" alt="" class="w-full h-full object-contain">
+                  <Image 
+                    src="/assets/img/logo_siresu_gold.png" 
+                    alt="" 
+                    class="w-full h-full object-contain"
+                    width="208"
+                    height="160"
+                    loading="lazy"
+                  />
                 </div>
               </div>
               <div class="mt-auto">
@@ -86,7 +101,14 @@ import { Coffee, ArrowUpRight, ChevronRight, Network } from 'lucide-astro'
             <div class="relative h-full rounded-xl bg-gradient-to-b from-[#4a74e7c1] to-[#232529] p-6 flex flex-col">
               <div class="flex-1 flex items-center justify-center py-12">
             <div class="w-52">
-              <img src="/assets/img/fletexlogo.png" alt="" class="w-full h-full object-contain">
+              <Image 
+                src="/assets/img/fletexlogo.png" 
+                alt="" 
+                class="w-full h-full object-contain"
+                width="208"
+                height="160"
+                loading="lazy"
+              />
             </div>
               </div>
               <div class="mt-auto">
